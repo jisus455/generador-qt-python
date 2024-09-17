@@ -4,6 +4,7 @@ from presentation.program import Ui_MainWindow
 from presentation.dialog import Ui_Dialog
 
 from business.cuilLogic import cuilCalculator
+from business.exportLogic import exportFile
 
 class MyMain(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -23,7 +24,7 @@ class MyMain(QMainWindow, Ui_MainWindow):
         mycuil = cuilCalculator(dni, genero)
         try:
             mycuil.validate()
-            cuil = mycuil.calculate()
+            resultado = mycuil.calculate()
             self.txtCuil.setText(resultado)
         except Exception as e:
             self.txtCuil.setText(e.args[0])
@@ -41,7 +42,9 @@ class MyDialog(QDialog, Ui_Dialog):
         self.btnExportar.clicked.connect(self.exportar)
 
     def exportar(self):
-        print()
+        file = exportFile('M', '12345678', '999')
+        file.export()
+        
 
 
 # Inicializar la aplicacion

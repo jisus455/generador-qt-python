@@ -1,4 +1,3 @@
-
 class cuilCalculator:
     def __init__(self,dni,genre):
         self.dni = dni
@@ -6,6 +5,9 @@ class cuilCalculator:
         self.genredigits="00"
 
     def validate(self):
+        """
+        Esta funcion validar que los datos ingresados sean validos
+        """
         try:
             self.dni = int(self.dni)
             self.dni = abs(self.dni) #esto es para evitar errores si es negativo
@@ -22,7 +24,9 @@ class cuilCalculator:
                 cant_ceros = cant_ceros - 1
 
     def calculate(self):
-
+        """
+        Esta funcion calcular el cuil en base a los datos ingresados
+        """
         if self.genre.upper() == "M":
             self.digitsgenre = "20"
         if self.genre.upper() == "F":
