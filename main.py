@@ -1,13 +1,11 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow, QDialog
+from PyQt6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
+from PyQt6.QtGui import QIcon
 
 from presentation.program import Ui_MainWindow
 from presentation.dialog import Ui_Dialog
 
 from business.cuilLogic import cuilCalculator
 from business.exportLogic import exportFile
-
-import os
-import os.path
 
 class MyMain(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -26,8 +24,6 @@ class MyMain(QMainWindow, Ui_MainWindow):
         self.actionExportar.setStatusTip("Exportar los datos en un archivo")
         self.actionExportar.triggered.connect(self.ejecutar)
 
-    
-    
     def generar(self):
         self.genero = self.cmbGenero.currentData()
         self.dni = self.leDni.text()
@@ -41,15 +37,21 @@ class MyMain(QMainWindow, Ui_MainWindow):
 
     def ejecutar(self):
         dialog = MyDialog()
-        dialog.exec()
-         
-        ruta = dialog.data['ruta']
-        data = {'genero': self.genero, 'dni': self.dni, 'cuil': self.cuil}
-        result = exportFile().export(ruta, data)
-        if result:
-            self.statusbar.showMessage("Archivo exportado correctamente", 5000)
-        else:
-            self.statusbar.showMessage("Ocurrio un problema al exportar", 5000)
+        result = dialog.exec()
+        
+        if result == 0:
+            self.statusbar.showMessage("Operacion exportar cancelada", 5000)
+        
+        if result == 1:
+            ruta = dialog.data['ruta']
+            data = {'genero': self.genero, 'dni': self.dni, 'cuil': self.cuil}
+            result = exportFile().export(ruta, data)
+            if result:
+                self.statusbar.showMessage("Archivo exportado correctamente", 5000)
+            else:
+                self.statusbar.showMessage("Ocurrio un problema al exportar", 5000)
+        
+
 
 
         
@@ -58,8 +60,12 @@ class MyDialog(QDialog, Ui_Dialog):
         super(MyDialog, self).__init__(parent)
         self.setupUi(self)
 
+        self.btnNueva.setIcon(QIcon('././assets/image/carpeta.png'))
+        self.btnDescargas.setIcon(QIcon('././assets/image/carpeta.png'))
+        self.btnDocumentos.setIcon(QIcon('././assets/image/carpeta.png'))
+        self.btnEscritorio.setIcon(QIcon('././assets/image/carpeta.png'))
+
         self.data = {}
-        self.ruta = os.getcwd()
         self.btnAceptar.clicked.connect(self.aceptar)
         self.btnCancelar.clicked.connect(lambda: self.close())
 
@@ -69,9 +75,10 @@ class MyDialog(QDialog, Ui_Dialog):
         self.btnEscritorio.clicked.connect(self.escritorio)
 
     def aceptar(self):
-        self.data.setdefault('ruta', self.txtRuta.text())
-        self.close()
-    
+        if self.txtRuta.text():
+            self.data.setdefault('ruta', self.txtRuta.text())
+            self.done(1)
+
     def nueva(self):
         ruta = exportFile().getRoute('newdir')
         self.txtRuta.setText(ruta)
