@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'design.ui'
+# Form implementation generated from reading ui file 'program.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -12,37 +12,101 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(273, 413)
+        MainWindow.resize(702, 550)
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.btnGenerar = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.btnGenerar.setGeometry(QtCore.QRect(40, 340, 191, 24))
-        self.btnGenerar.setStyleSheet("background-color: rgb(0, 170, 255);\n"
-"color: rgb(255, 255, 255);\n"
-"border-radius: 5px;")
-        self.btnGenerar.setObjectName("btnGenerar")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.lblTitulo = QtWidgets.QLabel(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic")
+        font.setPointSize(20)
+        self.lblTitulo.setFont(font)
+        self.lblTitulo.setObjectName("lblTitulo")
+        self.verticalLayout_4.addWidget(self.lblTitulo)
+        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.verticalLayout_4.addItem(spacerItem)
         self.lblGenero = QtWidgets.QLabel(parent=self.centralwidget)
-        self.lblGenero.setGeometry(QtCore.QRect(40, 40, 49, 16))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic")
+        self.lblGenero.setFont(font)
         self.lblGenero.setObjectName("lblGenero")
-        self.lblDni = QtWidgets.QLabel(parent=self.centralwidget)
-        self.lblDni.setGeometry(QtCore.QRect(40, 140, 49, 16))
-        self.lblDni.setObjectName("lblDni")
-        self.leDni = QtWidgets.QLineEdit(parent=self.centralwidget)
-        self.leDni.setGeometry(QtCore.QRect(40, 160, 191, 22))
-        self.leDni.setObjectName("leDni")
+        self.verticalLayout_4.addWidget(self.lblGenero)
         self.cmbGenero = QtWidgets.QComboBox(parent=self.centralwidget)
-        self.cmbGenero.setGeometry(QtCore.QRect(40, 60, 191, 22))
+        self.cmbGenero.setMinimumSize(QtCore.QSize(0, 22))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        self.cmbGenero.setFont(font)
+        self.cmbGenero.setStyleSheet("")
         self.cmbGenero.setObjectName("cmbGenero")
+        self.verticalLayout_4.addWidget(self.cmbGenero)
+        self.lblDni = QtWidgets.QLabel(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic")
+        self.lblDni.setFont(font)
+        self.lblDni.setObjectName("lblDni")
+        self.verticalLayout_4.addWidget(self.lblDni)
+        self.txtDni = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.txtDni.setMinimumSize(QtCore.QSize(0, 22))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        font.setPointSize(10)
+        self.txtDni.setFont(font)
+        self.txtDni.setStyleSheet("QLineEdit {\n"
+"    padding-left: 2px;\n"
+"}")
+        self.txtDni.setText("")
+        self.txtDni.setObjectName("txtDni")
+        self.verticalLayout_4.addWidget(self.txtDni)
         self.lblCuil = QtWidgets.QLabel(parent=self.centralwidget)
-        self.lblCuil.setGeometry(QtCore.QRect(40, 240, 49, 16))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic")
+        self.lblCuil.setFont(font)
         self.lblCuil.setObjectName("lblCuil")
+        self.verticalLayout_4.addWidget(self.lblCuil)
         self.txtCuil = QtWidgets.QLabel(parent=self.centralwidget)
-        self.txtCuil.setGeometry(QtCore.QRect(40, 260, 191, 21))
+        self.txtCuil.setMinimumSize(QtCore.QSize(0, 18))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        font.setPointSize(10)
+        self.txtCuil.setFont(font)
+        self.txtCuil.setStyleSheet("QLabel {\n"
+"    padding: 2px;\n"
+"    border: 1px solid rgb(149, 149, 149);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"}")
         self.txtCuil.setText("")
         self.txtCuil.setObjectName("txtCuil")
+        self.verticalLayout_4.addWidget(self.txtCuil)
+        self.btnGenerar = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.btnGenerar.setEnabled(True)
+        self.btnGenerar.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic")
+        self.btnGenerar.setFont(font)
+        self.btnGenerar.setStyleSheet("QPushButton{\n"
+"    background-color: rgb(0, 170, 255);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(0, 150, 255);\n"
+"}\n"
+"")
+        self.btnGenerar.setObjectName("btnGenerar")
+        self.verticalLayout_4.addWidget(self.btnGenerar)
+        self.tableDatos = QtWidgets.QTableView(parent=self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI")
+        self.tableDatos.setFont(font)
+        self.tableDatos.setObjectName("tableDatos")
+        self.tableDatos.verticalHeader().setVisible(True)
+        self.verticalLayout_4.addWidget(self.tableDatos)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 273, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 702, 22))
         self.menubar.setObjectName("menubar")
         self.menuArchivo = QtWidgets.QMenu(parent=self.menubar)
         self.menuArchivo.setObjectName("menuArchivo")
@@ -61,9 +125,10 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.btnGenerar.setText(_translate("MainWindow", "Generar"))
+        self.lblTitulo.setText(_translate("MainWindow", "GENERADOR DE CUIL"))
         self.lblGenero.setText(_translate("MainWindow", "GENERO"))
         self.lblDni.setText(_translate("MainWindow", "DNI"))
         self.lblCuil.setText(_translate("MainWindow", "CUIL"))
+        self.btnGenerar.setText(_translate("MainWindow", "Generar"))
         self.menuArchivo.setTitle(_translate("MainWindow", "Archivo"))
         self.actionExportar.setText(_translate("MainWindow", "Exportar"))

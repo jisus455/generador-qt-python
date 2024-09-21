@@ -175,16 +175,19 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QPushButton" name="btnCancelar">
+     <widget class="QPushButton" name="btnAceptar">
       <property name="text">
-       <string>Cancelar</string>
+       <string>Aceptar</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnAceptar">
+     <widget class="QPushButton" name="btnCancelar">
       <property name="text">
-       <string>Aceptar</string>
+       <string>Cancelar</string>
       </property>
      </widget>
     </item>
